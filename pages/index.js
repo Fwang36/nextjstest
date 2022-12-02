@@ -1,4 +1,18 @@
 import Head from 'next/head'
+import Link from 'next/link';
+import * as Sentry from '@sentry/nextjs'
+
+
+Sentry.init({
+  dsn: "https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976",
+  debug: true,
+
+  tracesSampler: (samplingContext) => {
+    console.log("CONTEXT", samplingContext)
+    console.log("NAVIGATE", navigator)
+    return 1
+  }
+});
 
 export default function Home() {
   return (
@@ -10,7 +24,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Learn <Link href="/posts/first-post">this page!</Link>
         </h1>
 
         <p className="description">

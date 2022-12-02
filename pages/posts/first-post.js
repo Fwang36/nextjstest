@@ -1,0 +1,21 @@
+import Link from 'next/link';
+
+
+export default function FirstPost() {
+    return (
+        <>
+        <h1>First Post</h1>
+        <h2>
+            <Link href="/">Back To Home</Link>
+        </h2>
+        <button
+  type="button"
+  onClick={() => {
+    throw new Error("Sentry Frontend Error");
+  }}
+>
+  Throw error
+</button>
+        </>
+    )
+}
