@@ -6,12 +6,17 @@ import * as Sentry from '@sentry/nextjs'
 Sentry.init({
   dsn: "https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976",
   debug: true,
-
-  tracesSampler: (samplingContext) => {
-    console.log("CONTEXT", samplingContext)
-    console.log("NAVIGATE", navigator)
-    return 1
-  }
+  // tracesSampler: (samplingContext) => {
+  //   console.log("CONTEXT", samplingContext)
+  //   console.log("NAVIGATE", navigator)
+  //   return 1
+  // },
+  release: 2.0,
+  tracesSampleRate: 1,
+  // beforeSendTransaction(event) {
+  //   console.log("TEST index", event)
+  //   return event
+  // },
 });
 
 export default function Home() {

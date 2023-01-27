@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import * as Sentry from "@sentry/nextjs"
 
-
-export default function FirstPost() {
+export default function() {
     return (
         <>
         <h1>First Post</h1>
@@ -11,11 +11,16 @@ export default function FirstPost() {
         <button
   type="button"
   onClick={() => {
-    throw new Error("Sentry Frontend Error");
-  }}
+    throw new Error("Sentry Frontend Error") }}
 >
   Throw error
 </button>
+  <button type="button" onClick={() => {console.log(c)}}>UNDEFINED BUTTON</button>
+  <button type="button" onClick={() => {Sentry.close()}}>Close Sentry</button>
+  <button type="button" onClick={() => {throw new Error("Hydration Error")}}>Hydration</button>
+  <button type="button" onClick={() => {throw new Error("Hydration Error.")}}>Hydration.</button>
+  
+  <h2>HEFJKAHSDKAHSDJK</h2>
         </>
     )
 }

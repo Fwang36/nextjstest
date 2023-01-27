@@ -24,8 +24,8 @@ const sentryWebpackPluginOptions = {
   // the following options are set automatically, and overriding them is not
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
-  //   urlPrefix, include, ignore
-
+  //   urlPrefix, include, ignore 
+  release: 2.0,
   silent: true, // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
