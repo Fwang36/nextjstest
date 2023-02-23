@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@sentry/integrations": "^7.32.1",
-    "@sentry/nextjs": "^7.29.0",
+    "@sentry/nextjs": "^7.38.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
