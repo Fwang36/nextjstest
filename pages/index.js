@@ -18,7 +18,8 @@ Sentry.init({
   //   return event
   // },
 });
-
+console.log("hi")
+Sentry.captureException(new Error("test"))
 export default function Home() {
   return (
     <div className="container">
