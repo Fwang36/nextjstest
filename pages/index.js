@@ -11,7 +11,6 @@ Sentry.init({
   //   console.log("NAVIGATE", navigator)
   //   return 1
   // },
-  release: 2.0,
   tracesSampleRate: 1,
   // beforeSendTransaction(event) {
   //   console.log("TEST index", event)
