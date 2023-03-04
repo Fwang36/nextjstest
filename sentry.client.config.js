@@ -3,7 +3,6 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from '@sentry/nextjs';
-import { Offline as OfflineIntegration } from "@sentry/integrations";
 const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
 Sentry.init({
@@ -16,7 +15,6 @@ Sentry.init({
     new Sentry.BrowserTracing({
       // custom options
     }),
-    new OfflineIntegration({})
   ],
   // ...
   // Note: if you want to override the automatic release value, do not set a
