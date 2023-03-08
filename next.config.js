@@ -6,8 +6,8 @@
 const { withSentryConfig } = require('@sentry/nextjs')
 
 const moduleExports = {
+  // basePath: "/collection",
   // Your existing module.exports
-
   sentry: {
     // Use `hidden-source-map` rather than `source-map` as the Webpack `devtool`
     // for client-side builds. (This will be the default starting in
@@ -15,8 +15,11 @@ const moduleExports = {
     // https://webpack.js.org/configuration/devtool/ and
     // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map
     // for more information.
+    widenClientFileUpload: true,
+    hideSourceMaps:false,
+    
     debug:true,
-    hideSourceMaps: true,
+
   },
 };
 const sentryWebpackPluginOptions = {
@@ -25,7 +28,10 @@ const sentryWebpackPluginOptions = {
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore 
-  debug: true,
+  // release: "23",
+  silent: true,
+  // debug: true,
+  // ignore: [],
  // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
@@ -33,4 +39,4 @@ const sentryWebpackPluginOptions = {
 
 
 
-module.exports = withSentryConfig(moduleExports );
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);

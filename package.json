@@ -8,8 +8,8 @@
   "dependencies": {
     "@next/bundle-analyzer": "^13.2.3",
     "@sentry/integrations": "^7.32.1",
-    "@sentry/nextjs": "^7.40.0",
-    "next": "latest",
+    "@sentry/nextjs": "^7.37.1",
+    "next": "^13.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

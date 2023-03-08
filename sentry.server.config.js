@@ -16,7 +16,10 @@ Sentry.init({
   //     console.log("yes")
   //   }
   // },
+  release: "1232323223",
+
   debug:true,
+  // release: "22"
   // ...
   // Note: if you want to override the automatic release value, do not set a
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so
