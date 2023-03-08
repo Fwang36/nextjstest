@@ -17,7 +17,7 @@ const moduleExports = {
     // for more information.
     widenClientFileUpload: true,
     hideSourceMaps:false,
-    
+
     debug:true,
 
   },
@@ -29,9 +29,9 @@ const sentryWebpackPluginOptions = {
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore 
   // release: "23",
-  silent: true,
+  silent: false,
   // debug: true,
-  // ignore: [],
+  ignore: [],
  // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
