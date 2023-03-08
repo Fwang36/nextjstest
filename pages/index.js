@@ -41,7 +41,7 @@ export default function Home() {
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
-          <button type="button" onClick={() => {throw new Error("HomePage")}}>Hydration</button>
+          <button type="button" onClick={() => {throw new Error("HomePage")}}>Test</button>
 
           <a href="https://nextjs.org/learn" className="card">
             <h3>Learn &rarr;</h3>
