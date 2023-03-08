@@ -16,7 +16,6 @@ Sentry.init({
   //     console.log("yes")
   //   }
   // },
-  release: "1232323223",
 
   debug:true,
   // release: "22"
