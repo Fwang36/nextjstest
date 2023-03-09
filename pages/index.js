@@ -18,6 +18,7 @@ Sentry.init({
   // },
 });
 console.log("hi")
+console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
 Sentry.captureException(new Error("test"))
 export default function Home() {
   return (
