@@ -31,6 +31,7 @@ const sentryWebpackPluginOptions = {
   // release: "23",
   silent: false,
   // debug: true,
+  release: "500",
   ignore: [],
  // Suppresses all logs
   // For all available options, see:
