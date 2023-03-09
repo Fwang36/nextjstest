@@ -1,22 +1,22 @@
 import Head from 'next/head'
 import Link from 'next/link';
-// import * as Sentry from '@sentry/nextjs'
+import * as Sentry from '@sentry/nextjs'
 
 
-// Sentry.init({
-//   dsn: "https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976",
-//   debug: true,
-//   // tracesSampler: (samplingContext) => {
-//   //   console.log("CONTEXT", samplingContext)
-//   //   console.log("NAVIGATE", navigator)
-//   //   return 1
-//   // },
-//   tracesSampleRate: 1,
-//   // beforeSendTransaction(event) {
-//   //   console.log("TEST index", event)
-//   //   return event
-//   // },
-// });
+Sentry.init({
+  dsn: "https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976",
+  debug: true,
+  // tracesSampler: (samplingContext) => {
+  //   console.log("CONTEXT", samplingContext)
+  //   console.log("NAVIGATE", navigator)
+  //   return 1
+  // },
+  tracesSampleRate: 1,
+  // beforeSendTransaction(event) {
+  //   console.log("TEST index", event)
+  //   return event
+  // },
+});
 console.log("hi")
 // console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
 // Sentry.captureException(new Error("test"))
