@@ -13,6 +13,7 @@ Sentry.init({
   integrations: [
     new Sentry.BrowserTracing({
       // custom options
+  
     }),
   ],
   // ...
