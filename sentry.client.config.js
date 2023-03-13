@@ -19,5 +19,5 @@ Sentry.init({
   // Note: if you want to override the automatic release value, do not set a
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so
   // that it will also get attached to your source maps
-  release: SENTRY_RELEASE
+  release: process.env.VERCEL_GIT_COMMIT_SHA
 });
