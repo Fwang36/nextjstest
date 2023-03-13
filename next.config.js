@@ -24,6 +24,7 @@ const sentryWebpackPluginOptions = {
 
   silent: false,
   ignore: [],
+  release: "1",
  // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
