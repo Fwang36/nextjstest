@@ -8,14 +8,18 @@ const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 Sentry.init({
   dsn: SENTRY_DSN || 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
   // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1.0,
+  // tracesSampleRate: 1.0,
   debug: true,
   integrations: [
     new Sentry.BrowserTracing({
       // custom options
   
     }),
+    new Sentry.Replay(),
   ],
+  replaysSessionSampleRate: 1,
+  replaysOnErrorSampleRate: 1,
+
   // ...
   //test2222
   // Note: if you want to override the automatic release value, do not set a

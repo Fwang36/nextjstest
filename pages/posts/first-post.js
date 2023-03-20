@@ -18,6 +18,8 @@ export default function() {
   <button type="button" onClick={() => {console.log(c)}}>UNDEFINED BUTTON</button>
   <button type="button" onClick={() => {Sentry.close()}}>Close Sentry</button>
   <button type="button" onClick={() => {throw new Error("Hydration Error")}}>Hydration</button>
+  <button type="button" onClick={() => {console.error("this is error")}}>console.error</button>
+  
   <button type="button" onClick={() => {throw new Error("Hydration Error.")}}>Hydration.</button>
   
   <h2>HEFJKAHSDKAHSDJK</h2>
