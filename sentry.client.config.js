@@ -13,6 +13,10 @@ const init2 = "yes";
     tracesSampleRate: 1.0,
     release: "1",
     debug: true,
+    beforeSend(event) {
+      console.log(event)
+      return event
+    },
     integrations: [
       new Sentry.BrowserTracing({
         // custom options
