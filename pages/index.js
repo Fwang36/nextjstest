@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link';
+import * as Sentry from '@sentry/nextjs';
 
+const id = "12345"
 
-
+Sentry.setUser({
+  id: id
+})
 // console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
 // Sentry.captureException(new Error("test"))
 export default function Home() {

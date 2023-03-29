@@ -7,6 +7,8 @@ import { RewriteFrames } from '@sentry/integrations';
 const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 const init2 = "yes";
   
+
+// const key = "1234"
   Sentry.init({
     dsn: SENTRY_DSN || 'https://dd442274e9994d4b88aba7fdcfcaa288@o4504894194450432.ingest.sentry.io/4504919201808384',
     // Adjust this value in production, or use tracesSampler for greater control
@@ -15,6 +17,7 @@ const init2 = "yes";
     debug: true,
     beforeSend(event) {
       console.log(event)
+
       return event
     },
     integrations: [
@@ -35,3 +38,5 @@ const init2 = "yes";
     // release: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "81"
   
   });
+
+
