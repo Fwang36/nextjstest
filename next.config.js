@@ -7,13 +7,16 @@ const { withSentryConfig } = require('@sentry/nextjs')
 
 const moduleExports = {
   // Your existing module.exports
-  sentry: {
 
+  sentry: {
+    // disableClientWebpackPlugin: true,
+    // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
     hideSourceMaps:false,
 
-
   },
+
+
 };
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -24,7 +27,8 @@ const sentryWebpackPluginOptions = {
 
   silent: false,
   ignore: [],
-  release: process.env.VERCEL_GIT_COMMIT_SHA || "61"
+  // release: process.env.VERCEL_GIT_COMMIT_SHA || "81"
+  release: "1"
  // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
@@ -32,4 +36,6 @@ const sentryWebpackPluginOptions = {
 
 
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions );
+
+// module.exports = (moduleExports)
