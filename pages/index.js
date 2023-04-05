@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import * as Sentry from '@sentry/nextjs';
+import {useState, useEffect} from 'react';
+import NewComponent from './posts/NewComponent';
+// const hub = new Sentry.Hub();
 
+let transaction2;
 const id = "12345"
 
 Sentry.setUser({
@@ -9,52 +13,88 @@ Sentry.setUser({
 })
 // console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
 // Sentry.captureException(new Error("test"))
+
+
+
 export default function Home() {
+
+  const [hub, setHub] = useState(new Sentry.Hub())
+
   return (
+    
     <div className="container">
-      <Head>
+      <Head props={hub}>
         <title>Create Nex App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
+      <NewComponent message="hi" prop={hub}>adsuhaiudhaisdu</NewComponent>
         <h1 className="title">
-          Learn <Link href="/posts/first-post">this page!</Link>
+          Learn <Link props={hub} href={{
+            pathname: "/posts/first-post",
+            query: Sentry.getCurrentHub()
+            }}>this page!</Link>
         </h1>
-
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
-
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <button type="button" onClick={() => {
+            Sentry.configureScope(scope => {
+              scope.setContext("1", {
+                test: "testingContext1"
+              })
+            })
+          }}>
+          SetContext1
+          </button>
           <button type="button" onClick={() => {throw new Error("HomePage")}}>Test</button>
+          
+          <button type="button" onClick={() => {
+            Sentry.configureScope(scope => {
+              scope.setContext("1", {
+                test2: "testingContext2"
+              })
+            })
+          }}>
+            SetContext2
+          </button>
+          <button type="button" onClick={() => {
+            Sentry.configureScope(scope => {
+              scope.setContext("1",{
+                ...scope._contexts,
+                test3: "testing Spread"
+              })
+            })
+          }}>Test Spread</button>
+          <button type="button" onClick={() => {
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+            const transaction1 = Sentry.startTransaction({ name: "shopCheckout" }); 
+            hub.setTag("test", "testValue")
+            Sentry.getCurrentHub().configureScope(scope => scope.setSpan(transaction1));  
+            
+            // console.log("test current hub", Sentry.getCurrentHub())
+            // setHub(Sentry.getCurrentHub())
+            // console.log(hub)
+            // transaction2 = Sentry.getCurrentHub().getScope().getTransaction()
+            // console.log("TRANSACTION2", transaction2)
+            // setHub(Sentry.getCurrentHub())
+            }}
+          >Start Transaction</button>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <button type="button" onClick={() => {
+            const transaction1 = Sentry.getCurrentHub().getScope().getTransaction()
+
+            transaction1.finish()
+          }}>FINSIH</button>
+<button type="button" onClick={() => {
+
+  console.log(hub)
+
+}}>hub test</button>
+
         </div>
       </main>
 
@@ -217,3 +257,4 @@ export default function Home() {
     </div>
   )
 }
+

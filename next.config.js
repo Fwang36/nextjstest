@@ -28,7 +28,7 @@ const sentryWebpackPluginOptions = {
   silent: false,
   ignore: [],
   // release: process.env.VERCEL_GIT_COMMIT_SHA || "81"
-  release: "1"
+  // release: "1"
  // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.

@@ -10,10 +10,13 @@ const init2 = "yes";
 
 // const key = "1234"
   Sentry.init({
-    dsn: SENTRY_DSN || 'https://dd442274e9994d4b88aba7fdcfcaa288@o4504894194450432.ingest.sentry.io/4504919201808384',
+    dsn: SENTRY_DSN || 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // Adjust this value in production, or use tracesSampler for greater control
     tracesSampleRate: 1.0,
     release: "1",
+    initialScope: {
+      tags: {"OLD HUB": "YES"}
+    },
     debug: true,
     beforeSend(event) {
       console.log(event)
@@ -22,11 +25,22 @@ const init2 = "yes";
     },
     integrations: [
       new Sentry.BrowserTracing({
+        markBackgroundTransactions: false,
+        // beforeNavigate: context => {
+        //   console.log("TRANS CONTEXT", context)
+        //   // if (context.name.includes("/posts")) {
+        //   //   return undefined
+        //   // }
+        //   return {
+        //     context
+        //   }
+        // }
         // custom options
     
       }),
       new Sentry.Replay(),      
     ],
+    
     replaysSessionSampleRate: 1,
     replaysOnErrorSampleRate: 1,
   
