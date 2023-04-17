@@ -13,5 +13,5 @@ Sentry.init({
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so
   // that it will also get attached to your source maps
   // release: process.env.VERCEL_GIT_COMMIT_SHA || "81"
-  release: '2.1'
+  release: '2.1991'
 });
