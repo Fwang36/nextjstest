@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import * as Sentry from "@sentry/nextjs"
-import { hub } from '..';
 import NewComponent from './NewComponent';
 console.log("test Transaction", Sentry.getCurrentHub().getScope().getTransaction())
 
