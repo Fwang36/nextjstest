@@ -13,7 +13,7 @@ const init2 = "yes";
     dsn: SENTRY_DSN || 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // Adjust this value in production, or use tracesSampler for greater control
     tracesSampleRate: 1,
-    release: "2",
+    release: "2.1",
     initialScope: {
       tags: {"OLD HUB": "YES"}
     },
