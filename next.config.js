@@ -24,9 +24,10 @@ const sentryWebpackPluginOptions = {
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore 
-
+  release: "2",
   silent: false,
   ignore: [],
+  urlPrefix: "~/dsiufgjdeifduihf"
   // release: process.env.VERCEL_GIT_COMMIT_SHA || "81"
   // release: "1"
  // Suppresses all logs

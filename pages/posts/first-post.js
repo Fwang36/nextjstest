@@ -32,7 +32,23 @@ export default function(props) {
   <button type="button" onClick={() => {Sentry.close()}}>Close Sentry</button>
   <button type="button" onClick={() => {throw new Error("Hydration Error")}}>Hydration</button>
   <button type="button" onClick={() => {console.error("this is error")}}>console.error</button>
-  
+  <button type="button" onClick={() => {
+
+
+    Sentry.configureScope((scope) => {
+      scope._contexts = {}
+    })
+
+    
+  }}>clear context</button>
+  <button type="button" onClick={() => {
+    Sentry.configureScope((scope) => {
+
+      scope.setContext("test", {
+        another: "testing"
+      })
+    })
+  }}></button>
   <button type="button" onClick={() => {throw new Error("Hydration Error.")}}>Hydration.</button>
   <button type="button" onClick={() => {
     console.log("SCOPED TRANS", hub.getScope().getTransaction())

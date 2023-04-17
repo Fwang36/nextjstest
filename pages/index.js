@@ -4,17 +4,38 @@ import * as Sentry from '@sentry/nextjs';
 import {useState, useEffect} from 'react';
 import NewComponent from './posts/NewComponent';
 // const hub = new Sentry.Hub();
+// const transaction3 = Sentry.startIdleTransaction(hub, "testing", 1, 5, true)
+// const hub = new Sentry.Hub()
 
+
+// const client = new Sentry.BrowserClient({
+//   transport: Sentry.makeFetchTransport,
+//   stackParser: Sentry.defaultStackParser,
+//   integrations: Sentry.defaultIntegrations,
+// });
+// const client2 = new Sentry.BrowserClient({
+//   dsn: "https://4957fab86a17419e85d3c258855bb7c1@o1407376.ingest.sentry.io/4504962808676352",
+//   tracesSampleRate: 1,
+// })
 let transaction2;
 const id = "12345"
 
 Sentry.setUser({
   id: id
 })
+Sentry.startTransaction({
+  name: "test",
+  sampled: true
+})
+Sentry.setContext("test", {
+  testContext: "testValue"
+})
 // console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
 // Sentry.captureException(new Error("test"))
 
+// const Sentry2 = window.Sentry
 
+// console.log(Sentry2)
 
 export default function Home() {
 
@@ -70,7 +91,7 @@ export default function Home() {
           }}>Test Spread</button>
           <button type="button" onClick={() => {
 
-            const transaction1 = Sentry.startTransaction({ name: "shopCheckout" }); 
+            const transaction1 = Sentry.startTransaction({ name: "shopCheckout", sampled:true }); 
             hub.setTag("test", "testValue")
             Sentry.getCurrentHub().configureScope(scope => scope.setSpan(transaction1));  
             
@@ -83,7 +104,9 @@ export default function Home() {
             }}
           >Start Transaction</button>
 
-
+            <button type="button" onClick={() => {
+              
+            }}>Start Automatic</button>
           <button type="button" onClick={() => {
             const transaction1 = Sentry.getCurrentHub().getScope().getTransaction()
 
@@ -94,7 +117,13 @@ export default function Home() {
   console.log(hub)
 
 }}>hub test</button>
-
+<button type="button" onClick={() => {
+  try {
+    testfunction()
+  } catch (e) {
+    Sentry.captureException("error");
+  }
+}}>Try Catch</button>
         </div>
       </main>
 

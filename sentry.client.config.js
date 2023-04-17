@@ -12,18 +12,29 @@ const init2 = "yes";
   Sentry.init({
     dsn: SENTRY_DSN || 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // Adjust this value in production, or use tracesSampler for greater control
-    tracesSampleRate: 1.0,
-    release: "1",
+    tracesSampleRate: 1,
+    release: "2",
     initialScope: {
       tags: {"OLD HUB": "YES"}
     },
     debug: true,
     beforeSend(event) {
-      console.log(event)
+      console.log(event.event_id)
 
       return event
     },
+    traceOptionsRequest: true,
     integrations: [
+      // new RewriteFrames({
+      //   iteratee: (frame) => {
+      //     const absPathArr = frame.abs_path.split('/')
+          
+      //     frame.abs_path = "app:///" + absPathArr[absPathArr.length -1]
+      //     frame.filename = frame.abs_path
+      //     console.log(frame)
+      //     return frame
+      //   }
+      // }),
       new Sentry.BrowserTracing({
         markBackgroundTransactions: false,
         // beforeNavigate: context => {
