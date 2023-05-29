@@ -57,27 +57,6 @@ const init2 = "yes";
     //   });
     // },
     integrations: [
-      new RewriteFrames({
-        iteratee: (frame) => {
-          frame.filename = "https://jhmi-staging.modelon.com/user/x-ola.flisback@modelon.com/impact/customizations/workspace_management/assets/index.9d5a4019.js"
-
-          let alteredFrame = frame.filename.split("/")
-          alteredFrame = alteredFrame.slice(-2)
-          alteredFrame = alteredFrame.join("/")
-          alteredFrame = "app:///" + alteredFrame
-          console.log("new frame", alteredFrame)
-
-          frame.filename = alteredFrame
-
-          return frame
-          // const absPathArr = frame.abs_path.split('/')
-          
-          // frame.abs_path = "app:///" + absPathArr[absPathArr.length -1]
-          // frame.filename = frame.abs_path
-          // console.log(frame)
-          // return frame
-        }
-      }),
       new Sentry.BrowserTracing({
         // shouldCreateSpanForRequest: span => {
         //   if (span.includes("development")) {
