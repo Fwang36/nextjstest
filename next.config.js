@@ -1,7 +1,3 @@
-// This file sets a custom webpack configuration to use your Next.js app
-// with Sentry.
-// https://nextjs.org/docs/api-reference/next.config.js/introduction
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 const { withSentryConfig } = require('@sentry/nextjs')
 
@@ -13,23 +9,17 @@ const moduleExports = {
     // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
     hideSourceMaps:false,
-
   },
 
 
 };
 const sentryWebpackPluginOptions = {
-  // Additional config options for the Sentry Webpack plugin. Keep in mind that
-  // the following options are set automatically, and overriding them is not
-  // recommended:
-  //   release, url, org, project, authToken, configFile, stripPrefix,
-  //   urlPrefix, include, ignore 
-  release: "2.1991",
+  // Additional config options for the Sentry Webpack plugin. 
+
+  release: "554",
   silent: false,
-  ignore: [],
-  // release: process.env.VERCEL_GIT_COMMIT_SHA || "81"
-  // release: "1"
- // Suppresses all logs
+  // ignore: [],
+
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };

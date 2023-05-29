@@ -12,30 +12,80 @@ const init2 = "yes";
   Sentry.init({
     dsn: SENTRY_DSN || 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // Adjust this value in production, or use tracesSampler for greater control
-    tracesSampleRate: 1,
-    release: "2.1991",
-    initialScope: {
-      tags: {"OLD HUB": "YES"}
+    // tracesSampleRate: 1,
+    release: "554",
+    // initialScope: {
+    //   tags: {"OLD HUB": "YES"},
+    //   // user: {id: "1231rrrr23"}
+    // },
+    initialScope:{
+      user: {
+        email: "test@123.com"
+      }
     },
-    debug: true,
+    // debug: true,
     beforeSend(event) {
-      console.log(event.event_id)
+
+      console.log(event)
 
       return event
     },
-    traceOptionsRequest: true,
-    integrations: [
-      // new RewriteFrames({
-      //   iteratee: (frame) => {
-      //     const absPathArr = frame.abs_path.split('/')
-          
-      //     frame.abs_path = "app:///" + absPathArr[absPathArr.length -1]
-      //     frame.filename = frame.abs_path
-      //     console.log(frame)
-      //     return frame
+    // ignoreTransactions: [/posts/],
+    beforeSendTransaction: (event) => {
+      
+      console.log("event", event)
+
+      console.log("message", event.message)
+      // for (let span of event.spans) {
+      //   if (span.description.includes("static")){
+
+      //     const index = event.spans.indexOf(span)
+      //     console.log(index)
+      //     console.log(event.spans[index])
+      //     delete event.spans[index]
+      //     console.log(event.spans)
+
       //   }
-      // }),
+      // }
+
+      return event
+    },
+    // integrations: function (integrations) {
+    //   // integrations will be all default integrations
+    //   return integrations.filter(function (integration) {
+    //     return integration.name !== "Dedupe";
+    //   });
+    // },
+    integrations: [
+      new RewriteFrames({
+        iteratee: (frame) => {
+          frame.filename = "https://jhmi-staging.modelon.com/user/x-ola.flisback@modelon.com/impact/customizations/workspace_management/assets/index.9d5a4019.js"
+
+          let alteredFrame = frame.filename.split("/")
+          alteredFrame = alteredFrame.slice(-2)
+          alteredFrame = alteredFrame.join("/")
+          alteredFrame = "app:///" + alteredFrame
+          console.log("new frame", alteredFrame)
+
+          frame.filename = alteredFrame
+
+          return frame
+          // const absPathArr = frame.abs_path.split('/')
+          
+          // frame.abs_path = "app:///" + absPathArr[absPathArr.length -1]
+          // frame.filename = frame.abs_path
+          // console.log(frame)
+          // return frame
+        }
+      }),
       new Sentry.BrowserTracing({
+        // shouldCreateSpanForRequest: span => {
+        //   if (span.includes("development")) {
+        //     console.log("span", span)
+        //     return span
+        //   }
+        //   return null
+        // },
         markBackgroundTransactions: false,
         // beforeNavigate: context => {
         //   console.log("TRANS CONTEXT", context)
@@ -49,11 +99,14 @@ const init2 = "yes";
         // custom options
     
       }),
-      new Sentry.Replay(),      
+      // new Sentry.Replay({
+      //   networkDetailAllowUrls: ["3000"],
+      //   networkCaptureBodies: true
+      // }),      
     ],
     
-    replaysSessionSampleRate: 1,
-    replaysOnErrorSampleRate: 1,
+    // replaysSessionSampleRate: 1,
+    // replaysOnErrorSampleRate: 1,
   
     // ...
     //test2222

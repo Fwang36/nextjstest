@@ -52,8 +52,8 @@ export default function(props) {
   <button type="button" onClick={() => {
     console.log("SCOPED TRANS", hub.getScope().getTransaction())
     console.log("new hub tag?", hub)
-  }}>GRAB CURRENT TRANSACTION</button>
-  <h2>HEFJKAHSDKAHSDJK</h2>
+  }}>GRAB CUwENT TRANSACTION</button>
+  <h2>HEFJKcsdcsdAHSDKAHSDJK</h2>
         </>
     )
 }

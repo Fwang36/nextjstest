@@ -7,7 +7,10 @@ import NewComponent from './posts/NewComponent';
 // const transaction3 = Sentry.startIdleTransaction(hub, "testing", 1, 5, true)
 // const hub = new Sentry.Hub()
 
-
+// const replay = new Sentry.Replay({
+//   sessionSampleRate: 0,
+//   errorSampleRate: 0
+// })
 // const client = new Sentry.BrowserClient({
 //   transport: Sentry.makeFetchTransport,
 //   stackParser: Sentry.defaultStackParser,
@@ -17,42 +20,38 @@ import NewComponent from './posts/NewComponent';
 //   dsn: "https://4957fab86a17419e85d3c258855bb7c1@o1407376.ingest.sentry.io/4504962808676352",
 //   tracesSampleRate: 1,
 // })
-let transaction2;
-const id = "12345"
 
-Sentry.setUser({
-  id: id
+
+Sentry.configureScope((scope) => {
+  scope.setTag({
+    email2: "123@123.com",
+    id2: "1233",
+  })
 })
-Sentry.startTransaction({
-  name: "test",
-  sampled: true
-})
+
 Sentry.setContext("test", {
   testContext: "testValue"
 })
 // console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
-// Sentry.captureException(new Error("test"))
-
 // const Sentry2 = window.Sentry
 
 // console.log(Sentry2)
 
 export default function Home() {
 
-  const [hub, setHub] = useState(new Sentry.Hub())
 
   return (
     
     <div className="container">
-      <Head props={hub}>
+      <Head>
         <title>Create Nex App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-      <NewComponent message="hi" prop={hub}>adsuhaiudhaisdu</NewComponent>
+      <NewComponent message="hi">adsuhaiudhaisdu</NewComponent>
         <h1 className="title">
-          Learn <Link props={hub} href={{
+          Learn <Link href={{
             pathname: "/posts/first-post",
             query: Sentry.getCurrentHub()
             }}>this page!</Link>
@@ -70,8 +69,26 @@ export default function Home() {
           }}>
           SetContext1
           </button>
-          <button type="button" onClick={() => {throw new Error("HomePage")}}>Test</button>
-          
+          <Link href={{
+            pathname: "/api/error",
+           
+            }}>this page!</Link>
+          <button type="button" onClick={() => {
+            try {
+
+              test()
+
+            } catch (error) {
+              // error.name = null
+              console.log("name", error.name)
+              console.log("message", error.message)
+              console.log("cause", error.cause)
+
+              throw error
+
+              // throw error
+            }
+          }}>TEST THROW CAT THROW</button>
           <button type="button" onClick={() => {
             Sentry.configureScope(scope => {
               scope.setContext("1", {
@@ -79,7 +96,7 @@ export default function Home() {
               })
             })
           }}>
-            SetContext2
+            SetContex
           </button>
           <button type="button" onClick={() => {
             Sentry.configureScope(scope => {
@@ -88,11 +105,11 @@ export default function Home() {
                 test3: "testing Spread"
               })
             })
-          }}>Test Spread</button>
+          }}>Test wread</button>
           <button type="button" onClick={() => {
 
             const transaction1 = Sentry.startTransaction({ name: "shopCheckout", sampled:true }); 
-            hub.setTag("test", "testValue")
+            // hub.setTag("test", "testValue")
             Sentry.getCurrentHub().configureScope(scope => scope.setSpan(transaction1));  
             
             // console.log("test current hub", Sentry.getCurrentHub())
@@ -114,16 +131,37 @@ export default function Home() {
           }}>FINSIH</button>
 <button type="button" onClick={() => {
 
-  console.log(hub)
+  // console.log(hub)
 
 }}>hub test</button>
+<button type="button" onClick={() => {
+  Sentry.configureScope((scope) => {
+    scope.setUser({
+      email: "123@123.com",
+      id: "1233",
+    })
+    scope.setContext("testContext", {
+      hello: "test value"
+    })
+  })
+}}>Set User</button>
+
+<button type="button" onClick={() => {
+  Sentry.setUser(null)
+}}>Clear User</button>
 <button type="button" onClick={() => {
   try {
     testfunction()
   } catch (e) {
-    Sentry.captureException("error");
+    Sentry.captureMessage("hello");
   }
 }}>Try Catch</button>
+<button type="button" onClick={() => {
+  console.error("ERRORROEORJODJEODO")
+}}>console error</button>
+<button type="button" onClick={() => {
+  crash()
+}}>Crash</button>
         </div>
       </main>
 
