@@ -15,12 +15,11 @@ const moduleExports = {
 };
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. 
-
   release: "aldenRelease",
   dist: "1",
   silent: false,
   ignore: [],
-
+  configFile: "sentry.properties"
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };

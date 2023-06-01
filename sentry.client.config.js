@@ -15,16 +15,19 @@ const init2 = "yes";
     // tracesSampleRate: 1,
     dist: "1",
     release: "aldenRelease",
-    // initialScope: {
-    //   tags: {"OLD HUB": "YES"},
-    //   // user: {id: "1231rrrr23"}
-    // },
+    initialScope: {
+      tags: {"OLD HUB": "YES"},
+      // user: {id: "1231rrrr23"}
+    },
     initialScope:{
+      tags: {
+        hello: "testTag"
+      } ,
       user: {
-        email: "test@123.com"
+        email: "test@123.com",
       }
     },
-    // debug: true,
+    debug: true,
     beforeSend(event) {
 
       console.log(event)
@@ -79,14 +82,14 @@ const init2 = "yes";
         // custom options
     
       }),
-      // new Sentry.Replay({
-      //   networkDetailAllowUrls: ["3000"],
-      //   networkCaptureBodies: true
-      // }),      
+      new Sentry.Replay({
+        networkDetailAllowUrls: ["3000"],
+        networkCaptureBodies: true
+      }),      
     ],
     
-    // replaysSessionSampleRate: 1,
-    // replaysOnErrorSampleRate: 1,
+    replaysSessionSampleRate: 1,
+    replaysOnErrorSampleRate: 1,
   
     // ...
     //test2222
@@ -97,4 +100,7 @@ const init2 = "yes";
   
   });
 
-
+Sentry.setTags({
+  hell2: "test",
+  dwdwd: "test2",
+})
