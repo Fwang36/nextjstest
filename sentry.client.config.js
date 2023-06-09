@@ -6,27 +6,28 @@ import * as Sentry from '@sentry/nextjs';
 import { RewriteFrames } from '@sentry/integrations';
 const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 const init2 = "yes";
-  
+import {init as reactInit, SDK_VERSION} from '@sentry/react'
+
 
 // const key = "1234"
   Sentry.init({
     dsn: SENTRY_DSN || 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // Adjust this value in production, or use tracesSampler for greater control
     // tracesSampleRate: 1,
-    dist: "1",
+    // dist: "1",
     release: "aldenRelease",
-    initialScope: {
-      tags: {"OLD HUB": "YES"},
-      // user: {id: "1231rrrr23"}
-    },
-    initialScope:{
-      tags: {
-        hello: "testTag"
-      } ,
-      user: {
-        email: "test@123.com",
-      }
-    },
+    environment: "testing",
+    // initialScope: {
+    //   tags: {"OLD HUB": "YES"},
+    //   // user: {id: "1231rrrr23"}
+    // },
+    // _metadata: {sdk: {name: "sdkasdasd", version: SDK_VERSION}},
+    // tracesSampler: (samplingContext) => {
+    //   console.log("CCONTEXT", samplingContext)
+    //   console.log("Ccon", samplingContext.location.pathname)
+    //   console.log("ccON", samplingContext.transactionContext)
+    //   return 1
+    // },
     debug: true,
     beforeSend(event) {
 

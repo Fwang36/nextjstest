@@ -14,5 +14,5 @@ Sentry.init({
   // that it will also get attached to your source maps
   // release: process.env.VERCEL_GIT_COMMIT_SHA || "81"
   release: 'aldenRelease',
-  dist: "1",
+  // dist: "1",
 });

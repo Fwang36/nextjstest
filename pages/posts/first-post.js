@@ -53,7 +53,7 @@ export default function(props) {
     console.log("SCOPED TRANS", hub.getScope().getTransaction())
     console.log("new hub tag?", hub)
   }}>GRAB CUwENT TRANSACTION</button>
-  <h2>HEFJKcsdcsdAHSDKAHSDJK</h2>
+  <h2>HEFJKcsdcsdAHSwewqdDKAHSDJK</h2>
         </>
     )
 }

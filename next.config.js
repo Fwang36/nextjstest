@@ -3,20 +3,21 @@ const { withSentryConfig } = require('@sentry/nextjs')
 
 const moduleExports = {
   // Your existing module.exports
-
+  // productionBrowserSourceMaps: true,
   sentry: {
     // disableClientWebpackPlugin: true,
     // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
-    hideSourceMaps:false,
+    hideSourceMaps:true,
   },
 
 
 };
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. 
+  // release: "aldenRelease",
+  // dist: "1",
   release: "aldenRelease",
-  dist: "1",
   silent: false,
   ignore: [],
   configFile: "sentry.properties"
