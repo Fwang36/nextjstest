@@ -16,4 +16,4 @@ For Sourcemaps Release Bundle Repro.  For most consistent results, you probably 
 
 7. Change back to "aldenRelease" and it should break.
 
-8. Change back to the new release, change some files and npm run build + npm run start 10 or so times and this release probably will too.  Sometimes won't break for a day or more.  Once broken, it will be broken forever until you change the value again.
+8. Change back to the new release, change some files and npm run build + npm run start 10 or so times and this release probably will break too.  Sometimes won't break for a day or more.  Once broken, it will be broken forever until you change the value again.
