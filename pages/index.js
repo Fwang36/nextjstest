@@ -1,25 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import * as Sentry from '@sentry/nextjs';
-import {useState, useEffect} from 'react';
 import NewComponent from './posts/NewComponent';
-// const hub = new Sentry.Hub();
-// const transaction3 = Sentry.startIdleTransaction(hub, "testing", 1, 5, true)
-// const hub = new Sentry.Hub()
 
-// const replay = new Sentry.Replay({
-//   sessionSampleRate: 0,
-//   errorSampleRate: 0
-// })
-// const client = new Sentry.BrowserClient({
-//   transport: Sentry.makeFetchTransport,
-//   stackParser: Sentry.defaultStackParser,
-//   integrations: Sentry.defaultIntegrations,
-// });
-// const client2 = new Sentry.BrowserClient({
-//   dsn: "https://4957fab86a17419e85d3c258855bb7c1@o1407376.ingest.sentry.io/4504962808676352",
-//   tracesSampleRate: 1,
-// })
 
 
 Sentry.configureScope((scope) => {
@@ -32,10 +15,7 @@ Sentry.configureScope((scope) => {
 Sentry.setContext("test", {
   testContext: "testValue"
 })
-// console.log('process.env.VERCEL_GIT_COMMIT_SHA: ', process.env.VERCEL_GIT_COMMIT_SHA);
-// const Sentry2 = window.Sentry
-
-// console.log(Sentry2)
+  
 
 export default function Home() {
 
