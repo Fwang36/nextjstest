@@ -12,7 +12,7 @@ For Sourcemaps Release Bundle Repro.  For most consistent results, you probably 
 
 5.  Current release is set to "aldenRelease" inside of the client, server, and next configs.  This release value never works anymore, so should not map.
 
-6. Change the releases to something else and do a npm run build + npm run start, it should work next time you throw the error.
+6. Change the releases to something else and do a npm run build + npm run start, and it likely will work when you trigger a new error. If it doesn't work or if all frames do not map, you will need to try another release value.
 
 7. Change back to "aldenRelease" and it should break.
 
