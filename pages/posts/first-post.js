@@ -23,7 +23,7 @@ export default function(props) {
         <button
   type="button"
   onClick={() => {
-    throw new Error("Sentry Frontend Error") }}
+    throw new Error("Test DSN Tunneling") }}
 >
   Throw error
 </button>
