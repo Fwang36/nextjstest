@@ -10,9 +10,9 @@ import { RewriteFrames } from '@sentry/integrations';
   Sentry.init({
     dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
 
-    release: "aldenRelease",
+    // release: "aldenRelease",
 
-    environment: "testing",
+    // environment: "testing",
 
     debug: true,
     beforeSend(event) {
