@@ -20,7 +20,7 @@ const sentryWebpackPluginOptions = {
   release: "aldenRelease",
   silent: false,
   ignore: [],
-  configFile: "sentry.properties"
+  // configFile: "sentry.properties"
 
 };
 
