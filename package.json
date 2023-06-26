@@ -3,10 +3,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && sentry-cli sourcemaps inject .next && sentry-cli sourcemaps upload .next",
+    "upload": "sentry-cli sourcemaps upload .next",
     "start": "next start"
   },
   "dependencies": {
-    "@sentry/cli": "^2.19.2",
+    "@sentry/cli": "^2.18.0",
     "@sentry/integrations": "^7.45.0",
     "@sentry/nextjs": "^7.56.0",
     "@sentry/react": "^7.54.0",
