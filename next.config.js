@@ -6,7 +6,7 @@ const moduleExports = {
   productionBrowserSourceMaps: true,
 
   sentry: {
-    tunnelRoute: "/monitoring",
+    // tunnelRoute: "/monitoring",
     disableClientWebpackPlugin: true,
     disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
