@@ -4,8 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "upload": "sentry-cli sourcemaps upload .next",
-    "start": "next start",
-    "test": 
+    "start": "next start"
   },
   "dependencies": {
     "@sentry/cli": "^2.18.0",
