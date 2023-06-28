@@ -2,9 +2,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && sentry-cli sourcemaps inject .next && sentry-cli sourcemaps upload .next",
+    "build": "next build",
     "upload": "sentry-cli sourcemaps upload .next",
-    "start": "next start"
+    "start": "next start",
+    "test": 
   },
   "dependencies": {
     "@sentry/cli": "^2.18.0",
