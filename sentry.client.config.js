@@ -10,9 +10,8 @@ import { RewriteFrames } from '@sentry/integrations';
   Sentry.init({
     dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
 
-    release: "10sdfiewjfwjfiwejwjuiwhefuewhfiwe",
-
-    // environment: "testing",
+    // release: "aldenRelease",
+    // dist: "1",
 
     debug: true,
     beforeSend(event) {
@@ -29,27 +28,24 @@ import { RewriteFrames } from '@sentry/integrations';
 
       return event
     },
-    integrations: function (integrations) {
-      // integrations will be all default integrations
-      return integrations.filter(function (integration) {
-        return integration.name !== "Dedupe";
-      });
-    },
-    // integrations: [
-    //   new Sentry.BrowserTracing({
-
-    //     markBackgroundTransactions: false,
-
+    // integrations: function (integrations) {
+    //   // integrations will be all default integrations
+    //   return integrations.filter(function (integration) {
+    //     return integration.name !== "Dedupe";
+    //   });
+    // },
+    integrations: [
+      new Sentry.BrowserTracing({
+        markBackgroundTransactions: false,
+      }),
+      new Sentry.Replay({
+        networkDetailAllowUrls: ["3000"],
+        networkCaptureBodies: true
+      }),      
+    ],
     
-    //   }),
-    //   new Sentry.Replay({
-    //     networkDetailAllowUrls: ["3000"],
-    //     networkCaptureBodies: true
-    //   }),      
-    // ],
-    
-    // replaysSessionSampleRate: 1,
-    // replaysOnErrorSampleRate: 1,
+    replaysSessionSampleRate: 1,
+    replaysOnErrorSampleRate: 1,
   
 
   

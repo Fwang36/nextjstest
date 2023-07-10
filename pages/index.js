@@ -142,6 +142,18 @@ export default function Home() {
 <button type="button" onClick={() => {
   crash()
 }}>Crash</button>
+<button type="button" onClick={() => {
+  Sentry.captureMessage();
+}}>messsage</button>
+<button type="button" onClick={() => {
+  Sentry.captureException(new Error ("testing"))
+}}>captureException</button>
+<button type="button" onClick={() => {
+  Sentry.captureException(new Error("testLocal"), (scope) => {
+    scope.setTag("TESTLOCAL", "YES");
+    return scope
+  })
+}}>LOCAL CAPTUREEXCEPTION</button>
         </div>
       </main>
 

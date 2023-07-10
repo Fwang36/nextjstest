@@ -3,24 +3,25 @@ const { withSentryConfig } = require('@sentry/nextjs')
 
 const moduleExports = {
 
-  productionBrowserSourceMaps: true,
-
+//framework-2c79e2a64abdb08b
   sentry: {
     // tunnelRoute: "/monitoring",
-    disableClientWebpackPlugin: true,
-    disableServerWebpackPlugin: true,
+    // disableClientWebpackPlugin: true,
+    // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
     hideSourceMaps:true,
   },
-
+  
+  // productionBrowserSourceMaps: true,
 
 };
 const sentryWebpackPluginOptions = {
 
-  release: "aldenRelease",
+  // release: "aldenRelease",
+  // dist: "1",
   silent: false,
   ignore: [],
-  // configFile: "sentry.properties"
+  configFile: "sentry.properties"
 
 };
 

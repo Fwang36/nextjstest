@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && sentry-cli sourcemaps upload .next",
+    "build": "next build --unsafe-perm && sentry-cli sourcemaps inject .next && sentry-cli sourcemaps upload .next --org francisorg --project javascript-nextjs",
     "upload": "sentry-cli sourcemaps upload .next",
     "start": "next start"
   },
