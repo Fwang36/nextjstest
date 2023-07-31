@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import "./sentry.edge.config.js";
 // The country to block from accessing the secret page
 const BLOCKED_COUNTRY = 'CA';
  
