@@ -19,7 +19,8 @@ Sentry.setContext("test", {
 
 export default function Home() {
 
-
+  Sentry.captureException(new Error("New Error"))
+  
   return (
     
     <div className="container">
@@ -154,6 +155,16 @@ export default function Home() {
     return scope
   })
 }}>LOCAL CAPTUREEXCEPTION</button>
+        </div>
+        <div>
+          <button type="button" onClick={() => {
+            const error = new Error("BrowserError")
+            console.log("name", error.name)
+            console.log("message", error.message)
+            console.log("stack", error.stack)
+
+          }}
+          >Log an Error</button>
         </div>
       </main>
 

@@ -2,16 +2,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --unsafe-perm && sentry-cli sourcemaps inject .next && sentry-cli sourcemaps upload .next --org francisorg --project javascript-nextjs",
+    "build": "next build",
     "upload": "sentry-cli sourcemaps upload .next",
     "start": "next start"
   },
   "dependencies": {
     "@sentry/cli": "^2.18.0",
     "@sentry/integrations": "^7.45.0",
-    "@sentry/nextjs": "^7.56.0",
+    "@sentry/nextjs": "^7.60.1",
     "@sentry/react": "^7.54.0",
-    "next": "13.2",
+    "next": "^13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

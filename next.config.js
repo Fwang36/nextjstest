@@ -9,7 +9,7 @@ const moduleExports = {
     // disableClientWebpackPlugin: true,
     // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
-    hideSourceMaps:true,
+    hideSourceMaps:false,
   },
   
   // productionBrowserSourceMaps: true,
@@ -18,9 +18,9 @@ const moduleExports = {
 const sentryWebpackPluginOptions = {
 
   // release: "aldenRelease",
-  // dist: "1",
+  // dist: "5",
   silent: false,
-  ignore: [],
+  // ignore: [],
   configFile: "sentry.properties"
 
 };

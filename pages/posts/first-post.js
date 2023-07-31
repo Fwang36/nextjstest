@@ -7,10 +7,8 @@ console.log("test Transaction", Sentry.getCurrentHub().getScope().getTransaction
 
 export default function(props) {
 
-  const router = useRouter();
-  const data = router.query;
-  console.log("data", data)
-  console.log("test", props)
+  Sentry.captureException(new Error("testing"))
+
 
     return (
         <>
