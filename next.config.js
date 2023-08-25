@@ -5,11 +5,11 @@ const moduleExports = {
 
 //framework-2c79e2a64abdb08b
   sentry: {
-    // tunnelRoute: "/monitoring",
+    tunnelRoute: "/monitoring",
     // disableClientWebpackPlugin: true,
     // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
-    hideSourceMaps:false,
+    hideSourceMaps:true,
   },
   
   // productionBrowserSourceMaps: true,
@@ -17,10 +17,10 @@ const moduleExports = {
 };
 const sentryWebpackPluginOptions = {
 
-  // release: "aldenRelease",
+  release: "hello12345",
   // dist: "5",
   silent: false,
-  // ignore: [],
+  ignore: [],
   configFile: "sentry.properties"
 
 };
@@ -28,5 +28,6 @@ const sentryWebpackPluginOptions = {
 
 
 module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions );
+
 
 // module.exports = (moduleExports)

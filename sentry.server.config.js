@@ -22,11 +22,13 @@ Sentry.init({
   // defaultIntegrations: false,
 
   // dist: "1",
+  beforeSendTransaction(even){
+    console.log(event)
+    return event
+  },
   beforeSend(event, hint) {
 
     return event
   }
 });
 
-console.log(process.env.SENTRY_ENVIRONMENT)
-// console.log(process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT)
