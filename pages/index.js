@@ -141,7 +141,9 @@ export default function Home() {
   console.error("ERRORROEORJODJEODO")
 }}>console error</button>
 <button type="button" onClick={() => {
+  console.log("terying to trigger a new deploy")
   crash()
+
 }}>Crash</button>
 <button type="button" onClick={() => {
   Sentry.captureMessage();
