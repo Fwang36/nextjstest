@@ -26,9 +26,12 @@ Sentry.init({
     console.log(event)
     return event
   },
-  beforeSend(event, hint) {
-
+  beforeSend(event) {
+    // console.log(event.request.headers)
+    // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
+    // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
+    console.log(event.request.headers)
     return event
-  }
+  },
 });
 

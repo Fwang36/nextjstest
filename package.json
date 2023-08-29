@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && find ./.next -name \"*.map\" -delete",
+    "build": "next build",
     "upload": "sentry-cli sourcemaps upload .next",
     "start": "next start"
   },
