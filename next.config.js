@@ -11,7 +11,7 @@ const moduleExports = {
     hideSourceMaps:true,
   },
   
-  // productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: true,
 
 }
 const sentryWebpackPluginOptions = {
