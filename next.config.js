@@ -20,7 +20,7 @@ const sentryWebpackPluginOptions = {
   // dist: "5",
   silent: false,
   ignore: [],
-  // configFile: "sentry.properties"
+  configFile: "sentry.properties"
 
 };
 
