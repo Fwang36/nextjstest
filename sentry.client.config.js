@@ -38,8 +38,8 @@ import * as Sentry from '@sentry/nextjs';
 //     ...sentryConfig,
 //   })
   Sentry.init({
-    dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
-    // dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
+    // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
+    dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // debug: true,
     // dist: "5",
     environment: "testing",
