@@ -5,8 +5,8 @@ const moduleExports = {
 
   sentry: {
     // tunnelRoute: "/monitoring",
-    // disableClientWebpackPlugin: true,
-    // disableServerWebpackPlugin: true,
+    disableClientWebpackPlugin: true,
+    disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
     hideSourceMaps:true,
   },
