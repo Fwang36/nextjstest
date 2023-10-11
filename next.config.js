@@ -5,18 +5,19 @@ const moduleExports = {
 
   sentry: {
     // tunnelRoute: "/monitoring",
-    disableClientWebpackPlugin: true,
-    disableServerWebpackPlugin: true,
+    // disableClientWebpackPlugin: true,
+    // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
     hideSourceMaps:true,
   },
-  
-  productionBrowserSourceMaps: true,
+  // distDir: 'build',
+  // assetPrefix: "/testing"
+  // productionBrowserSourceMaps: true,
 
 }
 const sentryWebpackPluginOptions = {
 
-  // release: "hello12345",
+  release: "hello12345677",
   // dist: "5",
   silent: false,
   ignore: [],

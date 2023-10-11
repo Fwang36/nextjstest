@@ -38,25 +38,26 @@ import * as Sentry from '@sentry/nextjs';
 //     ...sentryConfig,
 //   })
   Sentry.init({
+    defaultIntegrations: false,
     // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
     dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // debug: true,
     // dist: "5",
     environment: "testing",
-    release:"hello12345",
-    defaultIntegrations: false,
+    release:"testMultiProjectResolve",
+    // defaultIntegrations: false,
     // initialScope: {
     //   user: {
     //     ip_address: 1.1
     //   }
     // },
     beforeSend(event) {
-
-      console.log(event.debug_meta)
+      console.log(event)
       // console.log(event.request.headers)
       // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
       // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
       // console.log(event.request)
+      
       return event
     },
     tracesSampler: (event) => {
@@ -74,17 +75,20 @@ import * as Sentry from '@sentry/nextjs';
       new Sentry.BrowserTracing({
         markBackgroundTransactions: false,
       }),
-      new RewriteFrames(),
-      // new Sentry.Replay({
-      //   networkDetailAllowUrls: ["3000"],
-      //   networkCaptureBodies: true
-      // }),      
+
+      new Sentry.Replay({
+        networkDetailAllowUrls: ["3000"],
+        networkCaptureBodies: true,
+        
+      }),  
+      
+      new Sentry.Integrations.HttpContext()
     ],
-    debug:true,
+    // debug:true,
     tracesSampleRate: 1,
     replaysSessionSampleRate: 1, 
     replaysOnErrorSampleRate: 1,
   
   });
 
-  // console.log(process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT)
+  

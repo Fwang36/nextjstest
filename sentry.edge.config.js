@@ -8,6 +8,10 @@ Sentry.init({
   // We recommend adjusting this value in production
   tracesSampleRate: 1.0,
   debug:true,
+  beforeSend(event) {
+    console.log("beforeSend", event)
+    return event
+  }
   // ...
 
   // Note: if you want to ov    erride the automatic release value, do not set a

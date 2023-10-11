@@ -131,12 +131,8 @@ export default function Home() {
   Sentry.setUser(null)
 }}>Clear User</button>
 <button type="button" onClick={() => {
-  try {
-    testfunction()
-  } catch (e) {
-    Sentry.captureMessage("hello");
-  }
-}}>Try Catch</button>
+  Sentry.captureException("standard error")
+}}>error</button>
 <button type="button" onClick={() => {
   console.error("ERRORROEORJODJEODO")
 }}>console error</button>

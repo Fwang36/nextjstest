@@ -1,0 +1,14 @@
+// import { NextResponse } from 'next/server'
+// import * as Sentry from '@sentry/nextjs'
+// export async function middleware(req, ev) {
+//   console.log(Sentry.captureException(new Error("aasad222222aoishdsahdjkashfkjasfhasd")))
+//   const country = req.geo.country || "US";
+// //   const redis = new Redis({
+// //     url: "UPSTASH_REDIS_REST_URL",
+// //     token: "UPSTASH_REDIS_REST_TOKEN",
+// //   });
+// //   const result = await redis.get<string>(country);
+//   const greeting = "Hello World!";
+//   console.log(country)
+//   return NextResponse.redirect("http://localhost:3000/")
+// }
