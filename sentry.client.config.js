@@ -32,68 +32,65 @@ import * as Sentry from '@sentry/nextjs';
 //     }
 //   }
 
-//   Sentry.init({
-//     ...dsn,
-//     ...defaultConfig,
-//     ...sentryConfig,
-//   })
-  // Sentry.init({
-  //   // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
-  //   dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
-  //   // debug: true,
-  //   // dist: "5",
-  //   environment: "testing",
-  //   // release:"testMultiProjectResolve",
-  //   // defaultIntegrations: false,
-  //   // initialScope: {
-  //   //   user: {
-  //   //     ip_address: 1.1
-  //   //   }
-  //   // },
-  //   beforeSend(event) {
-  //     // console.log(event)
+  Sentry.init({
+    // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
+    dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
+    // debug: true,
+    // dist: "5",
+    environment: "testing",
+    // release:"testMultiProjectResolve",
+    // defaultIntegrations: false,
+    // initialScope: {
+    //   user: {
+    //     ip_address: 1.1
+    //   }
+    // },
+    sampleRate: 0,
+    
+    beforeSend(event) {
+      // console.log(event)
 
-  //     console.log(event.exception.values[0].stacktrace)
-  //     // console.log(event.request.headers)
-  //     // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
-  //     // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
-  //     // console.log(event.request)
+      console.log(event.exception.values[0].stacktrace)
+      // console.log(event.request.headers)
+      // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
+      // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
+      // console.log(event.request)
       
-  //     return event
-  //   },
-  //   tracesSampler: (event) => {
-  //     // console.log(event.transactionContext)
-  //     return 1
-  //   },
-  //   // beforeSendTransaction: (event) => {
-  //   //   console.log("transaction",event)
-  //   //   // console.log("event", event)
-  //   //   // console.log(event.sdkProcessingMetadata)
-  //   //   // console.log(event.t)
-  //   //   return event
-  //   // },
-  //   integrations: [
-  //     new Sentry.BrowserTracing({
-  //       markBackgroundTransactions: false,
-  //     }),
+      return event
+    },
+    tracesSampler: (event) => {
+      // console.log(event.transactionContext)
+      return 0
+    },
+    // beforeSendTransaction: (event) => {
+    //   console.log("transaction",event)
+    //   // console.log("event", event)
+    //   // console.log(event.sdkProcessingMetadata)
+    //   // console.log(event.t)
+    //   return event
+    // },
+    integrations: [
+      new Sentry.BrowserTracing({
+        markBackgroundTransactions: false,
+      }),
 
-  //     new Sentry.Replay({
-  //       beforeAddRecordingEvent: (event) => {
-  //         console.log(event.data)
-  //         return event
-  //       },
-  //       networkDetailAllowUrls: ["3000"],
-  //       networkCaptureBodies: true,
+      new Sentry.Replay({
+        beforeAddRecordingEvent: (event) => {
+          console.log(event.data)
+          return event
+        },
+        networkDetailAllowUrls: ["3000"],
+        networkCaptureBodies: true,
         
-  //     }),  
+      }),  
       
-  //     new Sentry.Integrations.HttpContext()
-  //   ],
-  //   // debug:true,
-  //   tracesSampleRate: 1,
-  //   replaysSessionSampleRate: 1, 
-  //   replaysOnErrorSampleRate: 1,
+      new Sentry.Integrations.HttpContext()
+    ],
+    // debug:true,
+    tracesSampleRate: 1,
+    replaysSessionSampleRate: 1, 
+    replaysOnErrorSampleRate: 1,
   
-  // });
+  });
 
   
