@@ -58,6 +58,7 @@ import * as Sentry from '@sentry/nextjs';
       
       return event
     },
+    autoSessionTracking: false,
     tracesSampler: (event) => {
       // console.log(event.transactionContext)
       return 0
