@@ -141,12 +141,21 @@ export default function Home() {
   crash()
 
 }}>Crash</button>
+
+<button type="button" onClick={() => {
+  Sentry.configureScope((scope) => {
+    scope.addAttachment({ filename: "attachment.txt", data: "Some content" });
+  });
+}}>add attachment to scope</button>
+
 <button type="button" onClick={() => {
   Sentry.captureMessage();
 }}>messsage</button>
+
 <button type="button" onClick={() => {
   Sentry.captureException(new Error ("testing"))
 }}>captureException</button>
+
 <button type="button" onClick={() => {
   Sentry.captureException(new Error("testLocal"), (scope) => {
     scope.setTag("TESTLOCAL", "YES");

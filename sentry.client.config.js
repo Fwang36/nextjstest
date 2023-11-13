@@ -38,13 +38,12 @@ import * as Sentry from '@sentry/nextjs';
 //     ...sentryConfig,
 //   })
   Sentry.init({
-    defaultIntegrations: false,
     // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
     dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
     // debug: true,
     // dist: "5",
     environment: "testing",
-    release:"testMultiProjectResolve",
+    // release:"testMultiProjectResolve",
     // defaultIntegrations: false,
     // initialScope: {
     //   user: {
@@ -52,7 +51,9 @@ import * as Sentry from '@sentry/nextjs';
     //   }
     // },
     beforeSend(event) {
-      console.log(event)
+      // console.log(event)
+
+      console.log(event.exception.values[0].stacktrace)
       // console.log(event.request.headers)
       // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
       // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
@@ -61,7 +62,7 @@ import * as Sentry from '@sentry/nextjs';
       return event
     },
     tracesSampler: (event) => {
-      console.log(event.transactionContext)
+      // console.log(event.transactionContext)
       return 1
     },
     // beforeSendTransaction: (event) => {
@@ -77,6 +78,10 @@ import * as Sentry from '@sentry/nextjs';
       }),
 
       new Sentry.Replay({
+        beforeAddRecordingEvent: (event) => {
+          console.log(event.data)
+          return event
+        },
         networkDetailAllowUrls: ["3000"],
         networkCaptureBodies: true,
         

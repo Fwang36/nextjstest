@@ -4,7 +4,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
 const moduleExports = {
 
   sentry: {
-    // tunnelRoute: "/monitoring",
+    tunnelRoute: "/monitoring",
     // disableClientWebpackPlugin: true,
     // disableServerWebpackPlugin: true,
     widenClientFileUpload: true,
@@ -17,7 +17,7 @@ const moduleExports = {
 }
 const sentryWebpackPluginOptions = {
 
-  release: "hello12345677",
+  // release: "hello12345677",
   // dist: "5",
   silent: false,
   ignore: [],

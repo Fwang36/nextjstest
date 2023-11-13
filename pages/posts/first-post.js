@@ -73,6 +73,15 @@ export default function(props) {
 
     Sentry.showReportDialog({user: {email: "123@gmail.com"},  eventId: eventID})
   }}>Show Dialog</button>
+
+
+<button type="button" onClick={() => {
+
+Sentry.setTag("apple", "bees")
+}}>Set Tag</button>
+
+
+
   <h2>HEFJKcsdcsdAHSwewqdDKAHSDJK</h2>
         </>
     )
