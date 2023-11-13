@@ -87,9 +87,9 @@ import * as Sentry from '@sentry/nextjs';
       new Sentry.Integrations.HttpContext()
     ],
     // debug:true,
-    tracesSampleRate: 1,
-    replaysSessionSampleRate: 1, 
-    replaysOnErrorSampleRate: 1,
+    // tracesSampleRate: 1,
+    // replaysSessionSampleRate: 1, 
+    // replaysOnErrorSampleRate: 1,
   
   });
 
