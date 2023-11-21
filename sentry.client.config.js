@@ -4,7 +4,7 @@
 
 import { RewriteFrames } from '@sentry/integrations';
 import * as Sentry from '@sentry/nextjs';
-
+import { Feedback } from '@sentry-internal/feedback';
 // const dsn = { dsn: "https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976" };
 // const defaultConfig = {
 //   release: 'testing',  
@@ -45,13 +45,12 @@ import * as Sentry from '@sentry/nextjs';
     //     ip_address: 1.1
     //   }
     // },
-    sampleRate: 0,
+    // sampleRate: 1,
     
     beforeSend(event) {
       // console.log(event)
 
-      console.log(event.exception.values[0].stacktrace)
-      // console.log(event.request.headers)
+      console.log(event.request.headers)
       // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
       // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
       // console.log(event.request)
@@ -60,6 +59,11 @@ import * as Sentry from '@sentry/nextjs';
     },
     autoSessionTracking: false,
     tracesSampler: (event) => {
+      console.log(location.hash)
+      if(location.hash) {
+        console.log("location detected")
+        return 1
+      }
       // console.log(event.transactionContext)
       return 0
     },
@@ -85,7 +89,11 @@ import * as Sentry from '@sentry/nextjs';
         
       }),  
       
-      new Sentry.Integrations.HttpContext()
+      new Sentry.Integrations.HttpContext(),
+      new Feedback({
+        successMessageText: "thanks keren"
+        
+      })
     ],
     // debug:true,
     // tracesSampleRate: 1,

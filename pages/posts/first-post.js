@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import * as Sentry from "@sentry/nextjs"
 import NewComponent from './NewComponent';
-
+import { Feedback } from '@sentry-internal/feedback';
 
 
 
@@ -27,7 +27,49 @@ export default function(props) {
 >
   Throw error
 </button>
+
+
+
+<button
+  type="button"
+  onClick={() => {
+    try {
+      Sentry.captureException(new AggregateError([new Error("1st error"), new Error("2nd Error")], "new aggregate"));
+    } catch (e) {
+      console.log(e instanceof AggregateError); // true
+
+    }
+
+    
+    
+    }}
+>
+  Throw aggregate
+</button>
+
+<button type="button"
+onClick={() => {
+  try {
+    connectToDatabase();
+  } catch (err) {
+    Sentry.captureException(new Error("Connecting to database failed.", { cause: err }));
+  }
+  
+}}>
+error cause</button>
+
   <button type="button" onClick={() => {console.log(c)}}>UNDEFINED BUTTON</button>
+
+
+  {/* <button type="button" onClick={() => {
+    
+  new Feedback({
+
+  })    
+    
+    }}>feedback</button> */}
+
+
 
   <button type="button" onClick={() => {
 
