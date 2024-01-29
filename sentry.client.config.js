@@ -5,32 +5,7 @@
 import { RewriteFrames } from '@sentry/integrations';
 import * as Sentry from '@sentry/nextjs';
 import { Feedback } from '@sentry-internal/feedback';
-// const dsn = { dsn: "https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976" };
-// const defaultConfig = {
-//   release: 'testing',  
-//   integrations: [
-//   new Sentry.BrowserTracing(),
-//   new Sentry.Replay()
-//   ],
-//   tracesSampleRate: 0.5,
-//   replaysSessionSampleRate: 0.1,
-//   replaysOnErrorSampleRate: 1.0
-//   };
 
-//   const sentryConfig = {
-//     // debug: true,
-//     replaysSessionSampleRate: 0,
-//     replaysOnErrorSampleRate: 0,
-//     environment: "testing",
-//     release: "22345432",
-//     autoBreadcrumbs: {
-//     console: false,
-//     dom: true,
-//     location: true,
-//     xhr: false,
-//     sentry: true
-//     }
-//   }
 
   Sentry.init({
     // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
@@ -38,35 +13,33 @@ import { Feedback } from '@sentry-internal/feedback';
     // debug: true,
     // dist: "5",
     environment: "testing",
-    // release:"testMultiProjectResolve",
     // defaultIntegrations: false,
-    // initialScope: {
-    //   user: {
-    //     ip_address: 1.1
-    //   }
-    // },
+    initialScope: {
+      user: {
+        ip_address: 1.1
+      }
+    },
     // sampleRate: 1,
     
     beforeSend(event) {
-      // console.log(event)
 
-      console.log(event.request.headers)
-      // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
-      // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
-      // console.log(event.request)
       
       return event
     },
-    autoSessionTracking: false,
-    tracesSampler: (event) => {
-      console.log(location.hash)
-      if(location.hash) {
-        console.log("location detected")
-        return 1
-      }
-      // console.log(event.transactionContext)
-      return 0
-    },
+
+
+    // autoSessionTracking: false,
+    // tracesSampler: (event) => {
+    //   console.log(location.hash)
+    //   if(location.hash) {
+    //     console.log("location detected")
+    //     return 0
+    //   }
+    //   // console.log(event.transactionContext)
+    //   return 0
+    // },
+
+    
     // beforeSendTransaction: (event) => {
     //   console.log("transaction",event)
     //   // console.log("event", event)
@@ -74,32 +47,29 @@ import { Feedback } from '@sentry-internal/feedback';
     //   // console.log(event.t)
     //   return event
     // },
+    // initialScope: {
+    //   user: {
+    //     email: "test@1235.com"
+    //   }
+    // },
     integrations: [
       new Sentry.BrowserTracing({
         markBackgroundTransactions: false,
       }),
 
       new Sentry.Replay({
-        beforeAddRecordingEvent: (event) => {
-          console.log(event.data)
-          return event
-        },
+
         networkDetailAllowUrls: ["3000"],
         networkCaptureBodies: true,
         
       }),  
-      
-      new Sentry.Integrations.HttpContext(),
-      new Feedback({
-        successMessageText: "thanks keren"
-        
-      })
+    
     ],
-    // debug:true,
-    // tracesSampleRate: 1,
+    debug:true,
+    tracesSampleRate: 1,
     // replaysSessionSampleRate: 1, 
-    // replaysOnErrorSampleRate: 1,
-  
+    replaysOnErrorSampleRate: 1,
+
   });
 
   

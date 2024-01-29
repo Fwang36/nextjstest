@@ -9,7 +9,9 @@ import { Feedback } from '@sentry-internal/feedback';
 
 export default function(props) {
 
-  const eventID = Sentry.captureException(new Error("testing"))
+  // const eventID = Sentry.captureException(new Error("testing"))
+  // const eventId = Sentry.captureMessage('User Feedback333'); 
+  // console.log("orig", eventId)
 
 
     return (
@@ -60,6 +62,19 @@ error cause</button>
 
   <button type="button" onClick={() => {console.log(c)}}>UNDEFINED BUTTON</button>
 
+  <button type="button" onClick={() => {
+    try {
+      throw new DOMException("Custom DOM Exception Triggered.");
+    } catch (error) {
+      console.log(error.stack)
+      Sentry.captureException(error)
+    }
+  }}>Domexception</button>
+
+<button type="button" onClick={() => {
+  Sentry.captureMessage("testing Mesage replay")
+  
+  }}>Domexception</button>
 
   {/* <button type="button" onClick={() => {
     
@@ -113,16 +128,33 @@ error cause</button>
 
   <button type="button" onClick={() => {
 
-    Sentry.showReportDialog({user: {email: "123@gmail.com"},  eventId: eventID})
+    Sentry.showReportDialog({user: {email: "123@gmail.com"},  eventId: eventId})
   }}>Show Dialog</button>
 
 
 <button type="button" onClick={() => {
-
+Sentry.withScope((scope) => {
+  scope.setContext('fullstory', { message: "hello" });
+  Sentry.captureMessage("this message")
+  })
 Sentry.setTag("apple", "bees")
 }}>Set Tag</button>
 
+<button type="button" onClick={() => {
 
+
+const eventId = Sentry.captureException(new Error("new error"));
+// OR: const eventId = Sentry.lastEventId();
+
+const userFeedback = {
+  event_id: eventId,
+  name: "John Doe",
+  email: "john@doe.com",
+  comments: "I really like your App, thanks!",
+};
+Sentry.captureUserFeedback(userFeedback);
+
+}}>User Feedback</button>
 
   <h2>HEFJKcsdcsdAHSwewqdDKAHSDJK</h2>
         </>

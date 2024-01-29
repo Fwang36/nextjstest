@@ -3,7 +3,7 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from '@sentry/nextjs';
-
+// import { ProfilingIntegration } from '@sentry/profiling-node';
 const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
 Sentry.init({
@@ -16,21 +16,27 @@ Sentry.init({
   // release: 'aldenRelease',
   // integrations: function (integrations) {
   environment: process.env.SENTRY_ENVIRONMENT || process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT || "noEnv",
-
+  // integrations: [    new ProfilingIntegration()],
   //   return integrations.filter((integration) => integration.name !== "RequestData");
   // },
   // defaultIntegrations: false,
-
+  tracesSampleRate: 1,
+  // profilesSampleRate: 1,
+  // profilesSampler(samplingContext) {
+  //   console.log(samplingContext)
+  //   return 1
+  // },
   // dist: "1",
-  beforeSendTransaction(even){
-    console.log(event)
+  beforeSendTransaction(event){
+    // console.log(event)
     return event
   },
+  debug: true,
   beforeSend(event) {
     // console.log(event.request.headers)
     // event.request.headers['X-Forwarded-For'] = "123.523.1.4"
     // event.request.env = {REMOTE_ADDR: "123.523.1.4"}      
-    console.log(event.request.headers)
+    // console.log(event.request.headers)
     return event
   },
 });

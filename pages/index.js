@@ -16,6 +16,7 @@ Sentry.setContext("test", {
   testContext: "testValue"
 })
   
+// Sentry.setUser({email: "hello@123.com"})
 
 export default function Home() {
 
@@ -110,11 +111,24 @@ export default function Home() {
 
             transaction1.finish()
           }}>FINSIH</button>
+
 <button type="button" onClick={() => {
 
-  // console.log(hub)
+  let feedback;
 
-}}>hub test</button>
+  feedback = new Sentry.Feedback({
+    useSentryUser: {
+      name: "id",
+      email: "username"
+    }
+  })
+
+  feedback.openDialog() 
+
+}}>open feedback</button>
+
+
+
 <button type="button" onClick={() => {
   Sentry.configureScope((scope) => {
     scope.setUser({
