@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "upload": "sentry-cli sourcemaps upload .next",
     "start": "next start"
@@ -9,8 +9,8 @@
   "dependencies": {
     "@sentry-internal/feedback": "^0.0.1-alpha.15",
     "@sentry/cli": "^2.18.0",
-    "@sentry/integrations": "^7.93.0",
-    "@sentry/nextjs": "^7.93.0",
+    "@sentry/integrations": "^7.99.0",
+    "@sentry/nextjs": "^7.99.0",
     "@sentry/profiling-node": "^1.2.6",
     "@sentry/react": "^7.54.0",
     "next": "^12.2.2",

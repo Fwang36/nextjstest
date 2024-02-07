@@ -2,14 +2,14 @@
 // The config you add here will be used whenever a page is visited.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-import { RewriteFrames } from '@sentry/integrations';
+import { RewriteFrames, CaptureConsole } from '@sentry/integrations';
 import * as Sentry from '@sentry/nextjs';
 import { Feedback } from '@sentry-internal/feedback';
 
 
   Sentry.init({
     // dsn: "http://fd28336e6c92410386c2ffffe4d3b7c2@sentry.io/4504089864830976",
-    dsn: 'https://fd28336e6c92410386c2ffffe4d3b7c2@o1407376.ingest.sentry.io/4504089864830976',
+    dsn: 'http://fd28336e6c92410386c2ffffe4d3b7c2@localhost:3000/4504089864830976',
     // debug: true,
     // dist: "5",
     environment: "testing",
@@ -17,8 +17,12 @@ import { Feedback } from '@sentry-internal/feedback';
     initialScope: {
       user: {
         ip_address: 1.1
+      },
+      tags: {
+        newTag: "Tagafasldkas"
       }
     },
+    release: "testing sessions",
     // sampleRate: 1,
     
     beforeSend(event) {
@@ -63,6 +67,8 @@ import { Feedback } from '@sentry-internal/feedback';
         networkCaptureBodies: true,
         
       }),  
+
+      new CaptureConsole(),
     
     ],
     debug:true,

@@ -29,7 +29,13 @@ export default function(props) {
 >
   Throw error
 </button>
-
+<button
+  type="button"
+  onClick={() => {
+    console.error("this is an error console") }}
+>
+  Console Error 2024
+</button>
 
 
 <button
